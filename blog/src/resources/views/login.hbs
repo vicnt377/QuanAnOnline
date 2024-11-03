@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng nhập</title>
+</head>
+<body>
+    <div class="login"> 
+        {{#if error}}
+            <p style="color: red;">{{error}}</p>
+        {{/if}}
+        <h1 class="h1_login">Đăng nhập</h1>
+
+        <form action="/login" method="POST">
+            <input type="text" placeholder="Email" id="email" name="email" required><br>
+            <input type="password" placeholder="Mật khẩu" id="password" name="password" required><br>
+            <button class="button_login" type="submit">Đăng nhập</button>
+        </form>
+
+    </div>
+</body>
+</html>
+{{!-- <div class="login">
+    <h1 class="h1_login">Đăng Nhập</h1>
+    <input type="text" placeholder="Tên đăng nhập"><br>
+    <input type="password" placeholder="Mật khẩu"><br>
+    <input id="input_login" type="submit" value="Đăng Nhập">
+    <a class="a_login">Quên mật khẩu?</a>
+</div> --}}

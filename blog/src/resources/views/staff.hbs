@@ -1,0 +1,55 @@
+<div class="boxcenter">
+        <div class="row mb header">
+            <h1>ADMIN</h1>
+        </div>
+        <div class="row mb menu">
+            <ul>
+                <li><a href="">Trang chủ</a></li>
+                <li><a href="">Menu</a></li>
+                <li><a href="">Nhân viên</a></li>
+                <li><a href="">Khách hàng</a></li>
+                <li><a href="#">Đơn hàng</a></li>
+                <li><a href="#">Báo cáo - Thống kê</a></li>
+            </ul>
+        </div>
+        <div class="row">
+            <div class="row headernewfood">
+                <h1>Danh sách nhân viên</h1>
+            </div>
+            <div class="row frmcontent">
+                <form action="#" method="post">
+                    <div class="row mb">
+                        
+                        <div class="frmdsachmon">
+                            <div class="table_dskhach mb">
+                                <table>
+                                    <tr>
+                                        <th>TÊN</th>
+                                        <th>ĐỊA CHỈ</th>
+                                        <th>SỐ ĐIỆN THOẠI</th>
+                                        <TH>EMAIL</TH>
+                                        <th>VỊ TRÍ</th>
+                                    </tr>
+                                   {{#each staffs}}
+                                    <tr>
+                                        <td>{{{this.name}}}</td>
+                                        <td>{{this.address}}</td>
+                                        <td>{{this.phone}}</td>
+                                        <td>{{this.email}}</td>
+                                        <td>{{this.position}}</td>
+                                    </tr>
+                                    {{/each}}
+                                    
+                                </table>
+                            </div>
+                        </div>
+                    </div>  
+                </form> 
+        </div>
+    
+        <div class="row mb footer">
+            Thông tin liên hệ:<br><br>
+            <i class="fa-solid fa-phone mr"></i>0123456789<br><br>
+            <i class="fa-solid fa-location-dot mr"></i>370 đường 3/2, p.Xuân Khánh, q.Ninh Kiều, tp.Cần Thơ
+        </div>
+    </div>
