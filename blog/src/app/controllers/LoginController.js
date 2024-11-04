@@ -1,6 +1,7 @@
 
-// const { mutipleMongooseToObject } = require('../../util/mongoose');
+const { mutipleMongooseToObject } = require('../../util/mongoose');
 const Customer = require('../models/Login');
+const Admin = require('../models/Login');
 
 class LoginController {
 
@@ -8,25 +9,36 @@ class LoginController {
         res.render('login')
     }
 
-    checkLogin(req, res, next) {
-        const { email, password } = req.body; // Lấy email và password từ request
+    async checkLogin(req, res, next) {
+        const { username, password } = req.body; // Lấy username và password từ request
 
-        // Kiểm tra thông tin đăng nhập
-        Customer.findOne({ email, password })
-            .then(customers => {
-                if (customers) {
-                    // Nếu tìm thấy khách hàng, chuyển hướng đến trang staff
-                    res.render('home', { customers }),
-                    console.log("Đăng nhập thành công!");
-                } else {
-                    // Nếu không tìm thấy, thông báo lỗi
-                    res.render('login', { error: 'Thông tin đăng nhập không đúng' });
-                }
-            })
-            .catch(error => {
-                console.error(error);
-                next(error); // Tiếp tục đến middleware lỗi
-            });
+        try {
+            // Tìm Admin trước
+            const admin = await Admin.findOne({ username, password });
+            if (admin) {
+                // Nếu tìm thấy Admin, chuyển hướng đến trang home
+                return res.render('home', { 
+                    admin: mutipleMongooseToObject(admin)
+                });
+            }
+
+            // Nếu không phải Admin, kiểm tra trong Customer
+            const customer = await Customer.findOne({ username, password });
+            if (customer) {
+                // Nếu tìm thấy Customer, chuyển hướng đến trang staff
+                return res.render('staff', { 
+                    customer: mutipleMongooseToObject(customer)
+                });
+            }
+
+            // Nếu không tìm thấy cả Admin và Customer
+            res.render('login', { error: 'Thông tin đăng nhập không đúng' });
+            
+        } catch (error) {
+            console.error(error);
+            next(error); // Tiếp tục đến middleware xử lý lỗi
+        }
+
     }
 }
 
