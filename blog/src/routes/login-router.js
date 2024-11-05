@@ -6,7 +6,7 @@ const loginController = require('../app/controllers/LoginController')
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
-router.get('/login',loginController.login)
 router.post('/login',loginController.checkLogin)
+router.get('/login',loginController.login)
 
 module.exports = router

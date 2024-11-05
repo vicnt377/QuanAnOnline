@@ -1,7 +1,8 @@
 
 const { mutipleMongooseToObject } = require('../../util/mongoose');
-const Customer = require('../models/Login');
-const Admin = require('../models/Login');
+const Customer = require('../models/Customer');
+const Admin = require('../models/Admin')
+
 
 class LoginController {
 
@@ -14,12 +15,11 @@ class LoginController {
 
         try {
             // Tìm Admin trước
-            const admin = await Admin.findOne({ username, password });
+            const admin = await Admin.find({ username, password });
             if (admin) {
                 // Nếu tìm thấy Admin, chuyển hướng đến trang home
-                return res.render('home', { 
-                    admin: mutipleMongooseToObject(admin)
-                });
+                return res.render('home', { admin })
+                    
             }
 
             // Nếu không phải Admin, kiểm tra trong Customer
