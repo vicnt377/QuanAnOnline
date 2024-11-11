@@ -1,9 +1,9 @@
 const express = require('express')
 const router = express.Router()
 
-const staffController = require('../app/controllers/HomeController')
+const homeController = require('../app/controllers/HomeController')
 
-
-router.get('/home',homeController.getHome)
+router.post('/home',homeController.createnewdish)
+router.get('/home',homeController.index)
 
 module.exports = router

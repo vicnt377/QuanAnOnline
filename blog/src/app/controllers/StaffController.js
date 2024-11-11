@@ -10,7 +10,6 @@ class StaffController{
                 res.render('staff',{
                     staffs : mutipleMongooseToObject(staffs)
                 })
-
             })
             .catch(next)
     }

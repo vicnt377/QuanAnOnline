@@ -1,19 +1,23 @@
 
 const { mutipleMongooseToObject } = require('../../util/mongoose');
+const multer = require('multer');
 const Home = require('../models/Home');
+const Dish = require('../models/Dish');
 
 class HomeController{
 
-    getHome(req, res, next) {
-        Home.find({})
-            .then(home => {
-                res.render('home',{
-                    home : mutipleMongooseToObject(home)
-                })
+    index(req, res, next) {
+        res.render('home')
+    }
 
-            })
-            .catch(next)
+    createnewdish(req, res, next){
+        const formData = req.body
+        formData.image = '${req.body.image}'
+        const newdish = new Dish(formData)
+        newdish.save()
+
+        res.redirect('/dish')
     }
 }
 
-module.exports = new StaffController;
+module.exports = new HomeController;

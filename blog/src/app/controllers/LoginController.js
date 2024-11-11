@@ -1,45 +1,33 @@
-
-const { mutipleMongooseToObject } = require('../../util/mongoose');
-const Customer = require('../models/Customer');
-const Admin = require('../models/Admin')
-
+const { mongooseToObject } = require('../../util/mongoose');
+const User = require('../models/User');
 
 class LoginController {
-
-    login(req, res){
-        res.render('login')
+    login(req, res) {
+        res.render('login');
     }
 
     async checkLogin(req, res, next) {
-        const { username, password } = req.body; // Lấy username và password từ request
+        const { username, password } = req.body;
 
         try {
-            // Tìm Admin trước
-            const admin = await Admin.find({ username, password });
-            if (admin) {
-                // Nếu tìm thấy Admin, chuyển hướng đến trang home
-                return res.render('home', { admin })
-                    
-            }
-
-            // Nếu không phải Admin, kiểm tra trong Customer
-            const customer = await Customer.findOne({ username, password });
-            if (customer) {
-                // Nếu tìm thấy Customer, chuyển hướng đến trang staff
-                return res.render('staff', { 
-                    customer: mutipleMongooseToObject(customer)
-                });
-            }
-
-            // Nếu không tìm thấy cả Admin và Customer
-            res.render('login', { error: 'Thông tin đăng nhập không đúng' });
+            // Tìm người dùng trong cơ sở dữ liệu với username và mật khẩu đã băm
+            const user = await User.find({ username, password });
+            console.log(user)
             
+            if (user) {
+                // Nếu tìm thấy người dùng, chuyển hướng đến trang 'home' với thông tin người dùng
+                res.render('home', {
+                    user
+                });
+            } else {
+                // Nếu không tìm thấy người dùng, hiển thị lỗi
+                res.render('login', { error: 'Thông tin đăng nhập không đúng' });
+            }
         } catch (error) {
-            console.error(error);
-            next(error); // Tiếp tục đến middleware xử lý lỗi
+            console.error('Error:', error);
+            next(error); // Chuyển tiếp lỗi đến middleware xử lý lỗi
         }
-
     }
 }
 
-module.exports = new LoginController;
+module.exports = new LoginController();

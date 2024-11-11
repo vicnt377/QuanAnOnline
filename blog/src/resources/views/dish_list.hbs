@@ -4,9 +4,9 @@
         </div>
         <div class="row mb menu">
             <ul>
-                <li><a href="">Trang chủ</a></li>
-                <li><a href="">Menu</a></li>
-                <li><a href="">Nhân viên</a></li>
+                <li><a href="/home">Trang chủ</a></li>
+                <li><a href="/dish">Menu</a></li>
+                <li><a href="staff">Nhân viên</a></li>
                 <li><a href="">Khách hàng</a></li>
                 <li><a href="#">Đơn hàng</a></li>
                 <li><a href="#">Báo cáo - Thống kê</a></li>
@@ -14,16 +14,14 @@
         </div>
         <div class="row">
             <div class="row headernewfood">
-                <h1>Danh sách món ăn</h1>
+                <h1>Menu</h1>
             </div>
             <div class="row frmcontent">
                 <form action="#" method="post">
                     <div class="row mb">
                         <div class="boxphai mr">
                             <div class="row mb">
-                                <div class="boxtitle">DANH MỤC
-                                </div>
-                                
+                                <div class="boxtitle">DANH MỤC</div>
                                 <div class="danhmucadmin boxcontent2">
                                     <ul>
                                         <a href="dish_list/donuong">
@@ -60,38 +58,12 @@
                                         <th>TÊN MÓN</th>
                                         <th></th>
                                     </tr>
-                                    {{!-- <tr>
-                                        <td><input type="checkbox" name="" id=""> </td>                  
-                                        <td id="img"><img src="/image/Lẩu/laucuadong.png" alt=""></td>
-                                        <td>Lẩu cua<br>
-                                            $30
-                                        </td>
-                                        <td>
-                                            <div class="icon">
-                                                    <button><i class="fa-solid fa-pen"></i></button>
-                                                    <button><i class="fas fa-trash-alt"></i></button>
-                                            </div>
-                                        </td>
-                                    </tr> --}}
-                                    {{!-- <tr>
-                                        <td><input type="checkbox" name="" id=""> </td>                  
-                                        <td id="img"><img src="/image/Lẩu/laucuadong.png" alt=""></td>
-                                        <td>Lẩu cua<br>
-                                            $30
-                                        </td>
-                                        <td>
-                                            <div class="icon">
-                                                    <button><i class="fa-solid fa-pen"></i></button>
-                                                    <button><i class="fas fa-trash-alt"></i></button>
-                                            </div>
-                                        </td>
-                                    </tr> --}}
-                                    {{#each data}}
+                                    {{#each dishes}}
                                     <tr>
                                         <td><input type="checkbox" name="" id=""> </td>                  
-                                        <td id="img"><img src="/image/Lẩu/laucuadong.png" alt=""></td>
-                                        <td>Lẩu cua<br>
-                                            $30
+                                        <td id="img"><img src="{{this.image}}" alt=""></td>
+                                        <td>{{this.name}}<br>
+                                            ${{this.coat}}
                                         </td>
                                         <td>
                                             <div class="icon">
@@ -100,7 +72,6 @@
                                             </div>
                                         </td>
                                     </tr>
-                                    
                                     {{/each}}
                                 </table>
                             </div>
@@ -108,13 +79,14 @@
                     </div>  
                     <div class="row btn mb10 ">
                        <input type="button" value="Chọn tất cả">
-                       <input type="button" value="Bỏ chọn tất cả">
+                       <input type="reset" value="Bỏ chọn tất cả">
                        <input type="button" value="Xóa các mục đã chọn">
-                       <a href="quanli.html"><input type="button" value="Thêm mới"></a>
+                       <a href="/home"><input type="button" value="Thêm mới"></a>
                     </div>
                 </form>
             </div>
         </div>
+
         <div class="row mb footer">
             Thông tin liên hệ:<br><br>
             <i class="fa-solid fa-phone mr"></i>0123456789<br><br>

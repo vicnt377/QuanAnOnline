@@ -5,10 +5,10 @@
 
         <div class="row mb menu">
             <ul>
-                <li><a href="">Trang chủ</a></li>
-                <li><a href="">Menu</a></li>
-                <li><a href="">Nhân viên</a></li>
-                <li><a href="">Khách hàng</a></li>
+                <li><a href="/home">Trang chủ</a></li>
+                <li><a href="/dish">Menu</a></li>
+                <li><a href="/staff">Nhân viên</a></li>
+                <li><a href="#">Khách hàng</a></li>
                 <li><a href="#">Đơn hàng</a></li>
                 <li><a href="#">Báo cáo - Thống kê</a></li>
             </ul>
@@ -18,28 +18,28 @@
                 <h1>Thêm mới món ăn</h1>
             </div>
             <div class="row frmcontent">
-                <form action="#" method="post">
+                <form action="/home" method="POST">
                     <div class="row mb10">
                         Mã món:<br>
-                        <input type="text" name="name" disabled>
+                        <input type="text" name="_id" disabled>
                     </div>
                     <div class="row mb10">
                         Tên món:<br>
-                        <input type="text" name="name">
+                        <input type="text" id="name" name="name">
                     </div>
                     <div class="row mb10">
                         Giá:<br>
-                        <input type="text" name="name">
+                        <input type="text" id="coat" name="coat">
                     </div>
                     <div class="row mb10">
                         Hình ảnh:<br>
-                        <input type="file" id="imageUpload" accept="image/*">
+                        <input type="file" id="image" name="image" accept="image/*">
                         
                     </div>
                     <div class="row mb10">
-                        <input type="submit" value="Thêm mới">
+                        <input type="submit" value="Thêm">
                         <input type="reset" value="Nhập lại">
-                        <a href="ds_monan.html"><input type="button" value="Danh sách món ăn"></a>
+                        <a href="/home/dish"><input type="button" value="Danh sách món ăn"></a>
                     </div>
 
                 </form>

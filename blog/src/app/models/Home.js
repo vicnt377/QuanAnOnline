@@ -4,10 +4,10 @@ const Schema = mongoose.Schema;
 
 //schema: lượt đồ
 const Home = new mongoose.Schema({
-    
-    createdAt: { type: Date, default: Date.now },
-    updateedAt: { type: Date, default: Date.now },
 
+},
+{
+    timestamps: true // Tự động tạo và cập nhật createdAt, updatedAt
 });
 
 module.exports = mongoose.model('Home', Home);
