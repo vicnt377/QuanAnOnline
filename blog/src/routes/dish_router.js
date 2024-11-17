@@ -4,7 +4,7 @@ const router = express.Router()
 const dishController = require('../app/controllers/DishesController')
 
 
-router.get('/dish',dishController.getDish)
-router.get('/home/dish',dishController.getDish)
+router.get('/admin',dishController.getDish)
+router.get('/admin/dish',dishController.getDish)
 
 module.exports = router

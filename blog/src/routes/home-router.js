@@ -3,7 +3,7 @@ const router = express.Router()
 
 const homeController = require('../app/controllers/HomeController')
 
-router.post('/home',homeController.createnewdish)
-router.get('/home',homeController.index)
+router.post('/admin',homeController.createnewdish)
+router.get('/admin',homeController.index)
 
 module.exports = router

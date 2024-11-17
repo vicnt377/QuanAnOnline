@@ -4,6 +4,8 @@ const morgan = require('morgan')
 const { engine } = require('express-handlebars');
 const session = require('express-session');
 const app = express()
+
+const moment = require('moment');
 const port = 3000
 // const db = require ('./config/database.config')
 
@@ -26,8 +28,15 @@ app.use(morgan('combined'))
 
 //template engine
 app.engine('hbs', engine({
-  extname: '.hbs'
+  extname: '.hbs',
+  helpers: {
+    sum: (a,b) => a+b,
+    statusClass: function(status) {
+      return status === 'Đã giao' ? 'success' : 'warning';
+    }
+  }
 }));
+
 
 
 app.set('view engine', 'hbs');
@@ -36,6 +45,7 @@ app.set('views', path.join(__dirname, 'resources','views'));
 //Route init
 route(app)
 
+require('dotenv').config();
 
 
 

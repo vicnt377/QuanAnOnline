@@ -1,53 +1,120 @@
-<div class="boxcenter">
-        <div class="row mb header">
-            <h1>ADMIN</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - QAO</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* CSS tùy chỉnh */
+        .header h1 {
+            font-size: 5rem;
+            color:  #ff6200;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-4">
+        <!-- Header -->
+        <div class="row mb-4 header">
+            <h1 class="text-center font-weight-bold">ADMIN</h1>
         </div>
 
-        <div class="row mb menu">
-            <ul>
-                <li><a href="/home">Trang chủ</a></li>
-                <li><a href="/dish">Menu</a></li>
-                <li><a href="/staff">Nhân viên</a></li>
-                <li><a href="#">Khách hàng</a></li>
-                <li><a href="#">Đơn hàng</a></li>
-                <li><a href="#">Báo cáo - Thống kê</a></li>
-            </ul>
-        </div>
+        <!-- Layout chính -->
         <div class="row">
-            <div class="row headernewfood">
-                <h1>Thêm mới món ăn</h1>
+            <!-- Menu bên trái -->
+            <div class="col-md-3">
+                <div class="list-group">
+                    <a href="/admin" class="list-group-item list-group-item-action active" aria-current="true">
+                        <i class="fa-solid fa-house"></i>
+                    </a>
+                    <a href="/admin/dish" class="list-group-item list-group-item-action">Menu</a>
+                    <a href="/admin/staff" class="list-group-item list-group-item-action">Nhân viên</a>
+                    <a href="#" class="list-group-item list-group-item-action">Khách hàng</a>
+                    <a href="#" class="list-group-item list-group-item-action">Đơn hàng</a>
+                </div>
             </div>
-            <div class="row frmcontent">
-                <form action="/home" method="POST">
-                    <div class="row mb10">
-                        Mã món:<br>
-                        <input type="text" name="_id" disabled>
-                    </div>
-                    <div class="row mb10">
-                        Tên món:<br>
-                        <input type="text" id="name" name="name">
-                    </div>
-                    <div class="row mb10">
-                        Giá:<br>
-                        <input type="text" id="coat" name="coat">
-                    </div>
-                    <div class="row mb10">
-                        Hình ảnh:<br>
-                        <input type="file" id="image" name="image" accept="image/*">
-                        
-                    </div>
-                    <div class="row mb10">
-                        <input type="submit" value="Thêm">
-                        <input type="reset" value="Nhập lại">
-                        <a href="/home/dish"><input type="button" value="Danh sách món ăn"></a>
-                    </div>
 
-                </form>
+            <!-- Nội dung chính bên phải -->
+            <div class="col-md-9">
+                <div class="card">
+                    <div class="card-header bg-primary text-white">
+                        <h2 class="text-center">Thêm mới món ăn</h2>
+                    </div>
+                    <div class="card-body">
+                        <form action="/home" method="POST">
+                            <!-- Loại món -->
+                            <div class="mb-3">
+                                <label for="type" class="form-label">Loại món</label>
+                                <select id="type" name="type" class="form-select">
+                                    <option value="">-- Chọn loại món --</option>
+                                    <option value="Lẩu">Lẩu</option>
+                                    <option value="Nướng">Nướng</option>
+                                    <option value="Mì">Mì</option>
+                                    <option value="Cơm">Cơm</option>
+                                    <option value="Bún">Bún</option>
+                                </select>
+                            </div>
+                            <!-- Tên món -->
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Tên món</label>
+                                <input type="text" id="name" name="name" class="form-control" placeholder="Nhập tên món ăn">
+                            </div>
+                            <!-- Giá -->
+                            <div class="mb-3">
+                                <label for="coat" class="form-label">Giá</label>
+                                <input type="text" id="coat" name="coat" class="form-control" placeholder="Nhập giá món ăn">
+                            </div>
+                            <!-- Hình ảnh -->
+                            <div class="mb-3">
+                                <label for="image" class="form-label">Hình ảnh</label>
+                                <input type="file" id="image" name="image" class="form-control" accept="image/*">
+                                <img id="preview" src="#" alt="Xem trước hình ảnh" class="img-thumbnail mt-3" style="display: none;">
+                            </div>
+                            <!-- Nút hành động -->
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary">Thêm</button>
+                                <button type="reset" class="btn btn-danger">Nhập lại</button>
+                                <a href="/admin/dish" class="btn btn-success">Danh sách món ăn</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="row mb footer">
-            Thông tin liên hệ:<br><br>
-            <i class="fa-solid fa-phone mr"></i>0123456789<br><br>
-            <i class="fa-solid fa-location-dot mr"></i>370 đường 3/2, p.Xuân Khánh, q.Ninh Kiều, tp.Cần Thơ
-        </div>
+
+        <!-- Footer -->
+        <footer class="mt-4 text-center py-3" style="background-color: #343a40; color: white;">
+            <p>Thông tin liên hệ:</p>
+            <p><i class="fa-solid fa-phone"></i> 0123456789</p>
+            <p><i class="fa-solid fa-location-dot"></i> 370 đường 3/2, p.Xuân Khánh, q.Ninh Kiều, tp.Cần Thơ</p>
+        </footer>
     </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Xem trước hình ảnh
+        const imageInput = document.getElementById('image');
+        const previewImage = document.getElementById('preview');
+
+        imageInput.addEventListener('change', function (e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (event) {
+                    previewImage.src = event.target.result;
+                    previewImage.style.display = 'block';
+                };
+                reader.readAsDataURL(file);
+            } else {
+                previewImage.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
